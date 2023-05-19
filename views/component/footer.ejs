@@ -1,0 +1,126 @@
+<footer id="footer">
+    <div class="footer-content">
+        <div class="wrapper">
+            <div class="inner">
+                <div class="grid-uniform footer-content__wrapper">
+                    <div class="grid__item large--one-third medium--one-whole small--one-whole order_3">
+                        <div class="ft-contact" style=" width: '84%' ">
+                            <img src="/rs/img/logo.png" width='100px' style="margin-left:20px" />
+                            <div class="ft-contact-desc">
+                                <div class="ft-contact-detail" style=" margin-left: -30px ">
+                                </div>
+                            </div>
+                            <div class="ft-contact-address">
+                                <span class="ft-contact-icon">
+                                    <i class="fas fa-map-marker-alt">
+                                    </i>
+                                </span>
+                                <% info.address.forEach(function(addr){ %>
+                                    <div class="ft-contact-detail">
+
+                                        <a href="pages/cua-hang">
+                                            <%= addr %>
+                                        </a>
+                                    </div>
+                                    <% }); %>
+                            </div>
+
+
+                            <div class="ft-contact-tel">
+                                <span class="ft-contact-icon">
+                                    <i class="fas fa-phone">
+                                    </i>
+                                </span>
+                                <div class="ft-contact-detail">
+                                    Hotline :
+                                    <a href={19001052}>
+                                        <%= info.phone %>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ft-contact-email">
+                                <span class="ft-contact-icon">
+                                    <i class="fas fa-envelope">
+                                    </i>
+                                </span>
+                                <div class="ft-contact-detail">
+                                    <a href="gmail.com">
+                                        <%= info.email %>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid__item large--one-third medium--one-half small--one-whole order_2">
+                        <div class="ft-nav">
+                            <h2 class="ft-title">
+                                Thông tin thêm
+                            </h2>
+                            <ul class="no-bullets">
+                                <li>
+                                    <a href="pages/about-us">
+                                        Giới thiệu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages/phuong-thuc-giao-hang">
+                                        Phương thức giao hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages/phuong-thuc-thanh-toan">
+                                        Phương thức thanh toán
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages/chinh-sach-bao-hanh">
+                                        Chính sách bảo hành
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages/chinh-sach-doi-tra">
+                                        Chính sách đổi trả
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages/chinh-sach-bao-mat">
+                                        Chính sách bảo mật
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid__item large--one-third medium--one-half small--one-whole order_2">
+                        <div class="ft-nav">
+                            <h2 class="ft-title">
+                                Mua hàng ở Lamapex
+                            </h2>
+                            <ul class="no-bullets">
+                                <% info.moreInfo.forEach(function(i){ %>
+                                    <li>
+                                        <a href="#">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="footer-copyrights">
+            <div class="inner">
+                <div class="copyrights-content">
+                    Copyrights © 2023 by
+                    <a href="" target="_blank">
+                        Lamapex
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
