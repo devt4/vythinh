@@ -3,53 +3,65 @@
 <%- include('component/head'); %>
 
 <body class="template-index" id="camelia-brand-more-than-simplicity">
-    <%- include('component/header', {info: data.brandInfo}); %>
-    <%- include('pages/index', {data: indexPageData}); %>
-    <%- include('component/footer', {info: data.brandInfo}); %>
+    <%- include('component/header', {info: brandInfo}); %>
+    <%- include('pages/'+pageName, {data: pageData}); %>
+    <%- include('component/footer', {info: brandInfo}); %>
   </body>
   <script src="/rs/js/index.js"></script>
   <script>
-    $(document).ready(function() {
- 
-   $('#owl-main-slider').owlCarousel({
-     smartSpeed: 1000,
-     nav: true,
-     dots: true,
-   autoplay:true,
- autoplayTimeout:3000,
- autoplayHoverPause:false,
-     animateIn: 'fadeIn',
-     animateOut: 'fadeOut',
-     
-     mouseDrag:false,
-     touchDrag:false,
-     rewind: true,
-     loop: true,
-     responsiveRefreshRate : 200,
-     navText: ['<img src="//theme.hstatic.net/1000365849/1000614631/14/rowleft.png?v=139">', '<img src="//theme.hstatic.net/1000365849/1000614631/14/rowright.png?v=139">'],
-     responsive:{
-       0:{
-         items:1,
-         nav: false,
-         dots: true,
-       },
-       480:{
-         items:1,
-         nav: false,
-         dots: true,
-       },
-       768:{
-         items:1
-       },
-       1000:{
-         items:1
-       }
-     }
-   });
+    $(document).ready(function () {
 
- 
-   
- 
- });
-   </script>
+      $('#owl-main-slider').owlCarousel({
+        smartSpeed: 1000,
+        nav: true,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+
+        mouseDrag: false,
+        touchDrag: false,
+        rewind: true,
+        loop: true,
+        responsiveRefreshRate: 200,
+        navText: ['<img src="//theme.hstatic.net/1000365849/1000614631/14/rowleft.png?v=139">', '<img src="//theme.hstatic.net/1000365849/1000614631/14/rowright.png?v=139">'],
+        responsive: {
+          0: {
+            items: 1,
+            nav: false,
+            dots: true,
+          },
+          480: {
+            items: 1,
+            nav: false,
+            dots: true,
+          },
+          768: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      });
+
+
+
+
+    });
+  </script>
+  <script>
+    const showItemByColor = (id, image1, image2)=>{
+        event.preventDefault();
+        const htmlString = `<img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover1" src="${image1}" />
+                <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover2" src="${image2}" />`
+        
+        let imageToShow = document.getElementById(`imageToShow_${id}`)
+
+        imageToShow.innerHTML=htmlString
+    }
+</script>
+
 </html>

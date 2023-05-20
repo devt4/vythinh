@@ -1,0 +1,64 @@
+<div id="PageContainer">
+    <main class="main-content" role="main">
+
+        <section id="collection-wrapper">
+            <div class="wrapper">
+                <div class="inner">
+                    <div class="grid mg-left-12">
+                        <div class="grid__item medium--one-whole small--one-whole pd-left12">
+                            <div class="collection-content-wrapper">
+                                <div class="collection-head">
+                                    <div class="grid mg-left-5">
+                                        <div
+                                            class="grid__item large--two-thirds medium--one-half small--one-whole pd-left5">
+                                            <div class="collection-title">
+                                                <h1><%= pageData.collectionName %></h1>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="grid__item large--one-third medium--one-half small--one-whole pd-left5">
+                                            <div class="collection-sorting-wrapper">
+                                                <div class="form-horizontal text-right">
+                                                    <label htmlFor="SortBy">Sắp xếp theo</label>
+                                                    <select name="SortBy" id="SortBy">
+                                                        <option value="best-selling">Sản phẩm bán chạy</option>
+                                                        <option value="price-ascending">Giá từ thấp tới cao</option>
+                                                        <option value="price-descending">Giá từ cao tới thấp</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-body">
+                                    <div class="grid-uniform product-list md-mg-left-15">
+                                        <% pageData.products.forEach(function(item){ %>
+                                           <%- include('../component/collection', {item: item} ); %>
+                                        <% }); %>
+                                    </div>
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <div class="pagination">
+                        <a href="#">«</a>
+                        <% for (var i =1; i <= pageData.totalPage;  i++ ) { %>
+                            <% if (i === pageData.currentPage) { %>
+                                <a style="background-color: #5fc1eb; border-radius: 5px;color: aliceblue;" href="#"> <%= i %> </a>    
+                            <%} else { %>
+                                <a href="#"> <%= i %> </a>    
+                            <% } %>
+                        <% } %>
+                        <a href="#">»</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>

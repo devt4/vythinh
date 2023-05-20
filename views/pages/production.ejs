@@ -1,0 +1,256 @@
+<section id="product-wrapper" onload="getListImage('<%= pageData.product.id %>')">
+
+    <div class="wrapper">
+        <div class="inner">
+            <div>
+                <div class="product-detail-inner">
+                    <div class="grid product-single">
+                        <div class="grid__item large--two-thirds medium--one-half small--one-whole">
+                            <div class="product-featured__image " data-no-instant>
+                                <div class="product-single__photos" id="ProductPhoto">
+                                    <div class="">
+                                        <a href="" id="js-featured-image" data-original="">
+                                            <img class="product-image-feature"
+                                                src="<%= pageData.product.colors[0].images[0] %>"
+                                                data-zoom-image="" id="ProductPhotoImg" />
+                                        </a>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" customize-product-slider clearfix">
+                                <div id="surround" class="clearfix">
+                                    <div class="product-images text-center" id="ProductPhoto">
+                                        <div id="sliderproduct">
+                                            <ul class="slides" id="slide-content">
+                                                <% pageData.product.colors[0].images.forEach(function(image, index){ %>
+                                                    <li class="product-thumb">
+                                                        <a onclick="showProductPhotoImg('<%= image %>')" href="#" class="product__thumbnail"
+                                                            data-image="<%= image %>" data-zoom-image="<%= image %>">
+                                                            <img  alt="Basic Backpack" data-image="<%= image %>"
+                                                                src="<%= image %>" width="150px" height="150px">
+                                                        </a>
+                                                    </li>
+                                                <% }); %>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="grid__item large--one-third medium--one-half small--one-whole img-bkgsnews">
+                            <div class="product-content">
+                                <div class="product-content-wrapper">
+                                    <div class="pro-content-head clearfix">
+                                        <div class="grid mg-left-5">
+                                            <div
+                                                class="grid__item large--one-whole medium--one-half small--two-thirds pd-left5">
+                                                <h1 itemProp="name">
+                                                    <%= pageData.product.name %>
+                                                </h1>
+                                            </div>
+                                            <hr class="border-bottoms" />
+                                        </div>
+                                    </div>
+                                    <div class="pro-price clearfix">
+                                        <span class="current-price ProductPrice" style="color: #5fc1eb;">
+                                            <%= pageData.product.price %> VND
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div class="product--description">
+                                            <p><span>
+                                                    <%= pageData.product.short_description %>
+                                                </span></p>
+                                            <ul>
+                                                <% pageData.product.attributes.forEach(function(i){ %>
+                                                    <li><span>
+                                                            <%= i %>
+                                                        </span></li>
+                                                    <% }); %>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <form action="/cart/add" method="post" encType="multipart/form-data"
+                                        id="AddToCartForm" class="form-vertical">
+                                        <div class="product-variants-wrapper">
+                                            <div id="product-select-watch" class="select-swatch">
+                                                <div id="variant-swatch-0" class="swatch swatch-product-single clearfix"
+                                                    data-option="option1" data-option-index={0}>
+                                                    <div class="header">Màu sắc</div>
+                                                    <div class="select-swap">
+                                                        <% pageData.product.colors.forEach(function(color){ %>
+                                                            <div data-value="<%= color.color_id %>"
+                                                                data-color="<%= color.color_id %>"
+                                                                class="n-sd swatch-element">
+                                                                <input class="variant-0 input-product"
+                                                                    id="<%= color.color_id %>" type="radio"
+                                                                    name="<%= color.color_id %>"
+                                                                    data-img-src="<%= color.images[0] %>" 
+                                                                   
+                                                                    />
+                                                                <label class="black has-thumb"
+                                                                onclick="pickColor('<%= color.color_id %>','<%= pageData.product.id %>')"
+                                                                htmlFor="swatch-0-black"
+                                                                    <%='style=background-color:' +color.color_id %> >
+                                                                    <img class="crossed-out"
+                                                                        src="//theme.hstatic.net/1000365849/1000614631/14/soldout.png?v=139" />
+                                                                    <img class="img-check"
+                                                                        src="//theme.hstatic.net/1000365849/1000614631/14/select-pro.png?v=139" />
+                                                                </label>
+                                                            </div>
+                                                            <% }); %>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="product-quantity clearfix">
+                                    <div class="qty-addcart clearfix" style="display: flex; align-items: center;">
+                                        <span>Số lượng </span>
+                                        <input type="number" id="Quantity" name="quantity" defaultValue={1} min={1}
+                                            class="quantity-selector" />
+                                    </div>
+                                </div>
+                                <div class="product-actions clearfix">
+                                    <button type="submit" name="add" id="AddToCart" class="btnAddToCart"><b>Thêm vào
+                                            giỏ</b></button>
+                                    <button type="button" name="buy" id="buy-now" class="btnBuyNow"><b>Mua
+                                            ngay</b></button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid__item large--two-thirds medium--one-whole small--one-whole ">
+                    <div class="product-description-wrapper">
+                        <div style="display: flex; justify-content: center;">
+                            <button class="product-description-btn"
+                                style="display: flex; justify-content: center; padding: 5px; font-size: 25px;">Mô tả sản
+                                phẩm</button>
+                            <!-- <button class="pro-tablinks" >Video
+                                    sản phẩm</button> -->
+                        </div>
+                        <div class="pro-tabcontent" style="display: block">
+                            <p>Basic Backpack™ - mẫu balo;truyền thống mang thiết kế đơn giản, gọn
+                                gàng phù hợp cho bạn dùng cả khi đi làm, đi học hoặc đi chơi.Basic
+                                nhưng lại rất nhiều lựa chọn, tuy đơn giản nhưng lại phù hợp với mọi
+                                hoàn cảnh. Đường nét tinh gọn cùng phong cách tối giản, Basic backpack
+                                cùng ngăn chứa rộng lớn, quai đeo êm ái, thoáng khí giúp bạn di chuyển
+                                thoải mái với chất liệu cao cấp giúp chống nước tốt và siêu nhẹ, chắc
+                                chắn đây là sự lựa chọn xứng đáng dành cho bạn.</p>
+                            <p><img src="https://cf.shopee.vn/file/4777dd2a93c237bba40c4b4e746f6a3f" />Chắc
+                                chắn bạn sẽ bất ngờ với những tiện ích phía bên trong chiếc balo này đem
+                                đến cho bạn đấy!Đường nét tinh gọn cùng phong cách tối giản, Basic
+                                backpack cùng ngăn chứa rộng lớn, quai đeo êm ái, thoáng khí giúp bạn di
+                                chuyển thoải mái với chất liệu cao cấp giúp chống nước tốt và siêu nhẹ,
+                                chắc chắn đây là sự lựa chọn xứng đáng dành cho bạn.</p>
+                            <p><img src="https://cf.shopee.vn/file/sg-11134202-22110-4busmzumgojv9c" />
+                            </p>
+                            <p>Về Camelia Brand</p>
+                            <p>Với thông điệp More than Simplicity, Camelia dành trọn tâm huyết để làm
+                                ra các sản phẩm của mình. Không chỉ là sự đơn giản ở thiết kế bên ngoài
+                                giúp cho người dùng luôn cảm thấy dễ dàng trong cách phối đồ, mà còn là
+                                sự chăm chút tỉ mỉ để mỗi sản phẩm đều thể hiện sự tinh gọn, tạo ra sự
+                                tiện lợi và ngăn nắp cho người sử dụng.</p>
+                            <p>Chính sách bảo hành - BẢO HÀNH TRỌN ĐỜI</p>
+                            <p>- Các sản phẩm của Camelia Brand được bảo hành TRỌN ĐỜI đối với những lỗi
+                                từ nhà sản xuất</p>
+                            <p>- Trong 7 ngày đầu tiên khi sử dụng sản phẩm, Camelia hỗ trợ đổi trả dành
+                                cho những sản phẩm còn nguyên hộp, chưa bóc ra sử dụng và có giữ lại hoá
+                                đơn mua hàng tại Camelia</p>
+                            <p>- Camelia hỗ trợ bảo hành miễn phí với những lỗi người dùng như: đứt dây
+                                quai, bung đường chỉ, dây kéo lỏng với các dòng sản phẩm balo và ví .
+                            </p>
+
+                            <p>LƯU Ý: Chính sách bảo hành KHÔNG áp dụng với:</p>
+                            <p>- Sản phẩm balo hoặc ví bị rách</p>
+                            <p>- Sản phẩm xuống màu sau một thời gian dài sử dụng</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="product-upselling" id="product-upselling">
+                <div class="tab">
+                    <div class="grid mg-left-0">
+                        <div class="grid__item large--one-whole medium--one-whole small--one-whole pd-left0">
+                            <button class="tablinks" id="defaultOpenTabs">Có thể bạn thích</button>
+                        </div>
+                        <div class="grid__item large--one-whole medium--one-whole small--one-whole pd-left0">
+                        </div>
+                    </div>
+                    <div id="relatedtab" class="tabcontent" style="display: block;">
+                        <section>
+                            <div style="display: flex;">
+                                <div class="item">
+                                    <% pageData.relativeProductions.forEach(function(i){ %>
+                                        <%- include("../component/collection", {item: i}); %>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<script>
+    const getColors = async (id)=>{
+        const rs = await fetch(`/production/colors/${id}`)
+        const listColor = await rs.json()
+        return listColor
+    }
+
+    const showProductPhotoImg = (image) =>{
+        event.preventDefault();
+        const ProductPhotoImg = document.getElementById("ProductPhotoImg")
+
+        ProductPhotoImg.setAttribute("src", image)
+    }
+
+    const pickColor =async (id_col, pro_id)=> {
+        const cols = await getColors(pro_id)
+        console.log(id_col);
+        let htmlString=""
+        let firstImage = ""
+        cols.colors.map((color)=>{
+            if (color.color_id==id_col) {
+                firstImage = color.images[0]
+                color.images.forEach((i)=>{
+                    htmlString += ` <li class="product-thumb">
+                            <a onclick="showProductPhotoImg('${i}')" href="#" class="product__thumbnail"
+                                data-image="${i}" data-zoom-image="${i}">
+                                <img  alt="Basic Backpack" data-image="${i}"
+                                    src="${i}" width="150px" height="150px">
+                            </a>
+                        </li>`
+                })
+                
+            }
+        })
+        const ProductPhotoImg = document.getElementById("ProductPhotoImg")
+
+        ProductPhotoImg.setAttribute("src", firstImage)
+
+        document.getElementById("slide-content").innerHTML= htmlString
+
+    }
+</script>

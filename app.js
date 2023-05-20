@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
+var collectionRouter = require('./routes/collections');
+var productionRouter = require("./routes/productions")
+var globalMiddleware = require("./middleware/global_middleware")
 
 var app = express();
 
@@ -19,8 +21,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//use middleware 
+app.use("/*", globalMiddleware)
+
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/collections', collectionRouter);
+app.use("/production", productionRouter);
+
+app.use("/about", (req, res)=> {
+  res.render('index', { pageName: "about", pageData: {} });
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,6 +48,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 app.listen(3000, ()=>{
   console.log("Server started");

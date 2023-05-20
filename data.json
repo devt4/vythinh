@@ -1,0 +1,106 @@
+{
+  "bannerImages": [
+    "/rs/ms_banner_img1.jpg?v=139",
+    "/rs/ms_banner_img3.jpg?v=139",
+    "/rs/ms_banner_img4.jpg?v=139"
+  ],
+  "collection": [
+    {
+      "_id": "backpacks",
+      "collectionName": "Backpacks",
+      "totalPage": 3,
+      "itemsEachPage": 4,
+      "currentPage": 1,
+      "products": [
+        {
+          "id": "1",
+          "name": "PREMIUM DAILY BACKPACK",
+          "price": "560.000",
+          "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
+          "long_description": "",
+          "attributes": [
+              "Kích thước: 42 x 29 x 15 cm",
+              "Chất liệu: Vải Polyester Canvas cao cấp chống thấm nước",
+              "Ngăn chống sốc: Đựng vừa laptop 14,5' "
+            ],
+          "colors": [
+            {
+              "color_id": "#212A3E",
+              "images": [
+                "/rs/demo-balo.jpg",
+                "/rs/demo-balo1.jpg"
+              ],
+              "availiable": true
+            },
+            {
+              "color_id": "#E57C23",
+              "images": [
+                "/rs/global_backpack_1.jpg",
+                "/rs/global_backpack_12_1.jpg"
+              ],
+              "availiable": false
+            }
+          ]
+        },
+        {
+          "id": "abc",
+          "name": "PREMIUM DAILY BACKPACK2",
+          "price": "560.000",
+          "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
+          "attributes": [
+            "Kích thước: 42 x 29 x 15 cm",
+            "Chất liệu: Vải Polyester Canvas cao cấp chống thấm nước",
+            "Ngăn chống sốc: Đựng vừa laptop 14,5' "
+          ],
+          "colors": [
+            {
+              "color_id": "#212A3E",
+              "images": [
+                "/rs/demo-balo.jpg",
+                "/rs/demo-balo1.jpg"
+              ],
+              "availiable": true
+            },
+            {
+              "color_id": "#E57C23",
+              "images": [
+                "/rs/global_backpack_1.jpg",
+                "/rs/global_backpack_12_1.jpg"
+              ],
+              "availiable": true
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "name": "PREMIUM DAILY BACKPAC3",
+          "price": "560.000",
+          "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
+          "attributes": [
+            "Kích thước: 42 x 29 x 15 cm",
+            "Chất liệu: Vải Polyester Canvas cao cấp chống thấm nước",
+            "Ngăn chống sốc: Đựng vừa laptop 14,5' "
+          ],
+          "colors": [
+            {
+              "color_id": "#212A3E",
+              "images": [
+                "/rs/demo-balo.jpg",
+                "/rs/demo-balo1.jpg"
+              ],
+              "availiable": true
+            },
+            {
+              "color_id": "#E57C23",
+              "images": [
+                "/rs/global_backpack_1.jpg",
+                "/rs/global_backpack_12_1.jpg"
+              ],
+              "availiable": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

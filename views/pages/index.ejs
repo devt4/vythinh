@@ -1,7 +1,7 @@
 <div id="main-slider">
     <div class="inner">
         <div class="owl-carousel owl-theme" id="owl-main-slider">
-            <% data.bannerImages.forEach(function(image){ %>
+            <% pageData.bannerImages.forEach(function(image){ %>
                 <div class="item">
                     <div class="slider-item">
                         <div class="slider-img">
@@ -38,7 +38,7 @@
             <div class="wrapper">
                 <div class="inner">
                     <div class="home-section-body">
-                        <% data.collection.forEach(function(item){ %>
+                        <% pageData.collection.forEach(function(item){ %>
                             <div class="tab clearfix text-center">
                             </div>
                             <div class="home-section-head">
@@ -54,39 +54,7 @@
                                 
                                     <div class="grid-uniform md-mg-left-15">
                                         <% item.products.forEach(function(product){ %>
-                                        <div class="grid__item large--one-quarter medium--one-quarter small--one-half md-pd-left15">
-                                            <div class="product-item text-center">
-                                                <img alt="Black" class="hiddenxx" src2="/rs/demo-balo.jpg" />
-                                                <div class="product-img">
-                                                    <a href="products/<%= product.id %>">
-                                                        <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover1" data-src="/rs/demo-balo.jpg" src="<%= product.images[0] %>" />
-                                                        <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover2" data-src="" src="<%= product.images[1] %>" />
-                                                    </a>
-                                                </div>
-                                                <!-- <div class="list-variants-img medium--hide small--hide">
-                                                    <div class="inner">
-                                                        <ul class="no-bullets clearfix text-center">
-                                                            <li class="active">
-                                                                <a class="variant-image-loop black" data-feature-image="" data-img="" data-src="//product.hstatic.net/1000365849/product/z4233549560722_78630a983c447d5b600689d23ae7ea5e__1__b6f50f5a0e5041fb8d1edb12c575533c_large.jpg" href="products/premium-daily-backpack" title="Black" titlexx="black">
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div> -->
-                                                <div class="product-info">
-                                                    <div class="product-title">
-                                                        <a href="products/<%= product.id %>">
-                                                            <%= product.name %>
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        <span class="current-price">
-                                                            <%= product.price %> VND
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <%- include("../component/collection", {item: product}); %>
                                         <% }); %>
                                     </div>
                                     
@@ -94,8 +62,8 @@
                                         <span>
                                             Xem tất cả
                                         </span>
-                                        <a class="btnViewMore" href="collections/backpacks">
-                                            BACKPACKS
+                                        <a class="btnViewMore" href="collections/<%= item._id %>">
+                                            <%= item.collectionName %>
                                             <i class="fas fa-angle-double-right">
                                             </i>
                                         </a>

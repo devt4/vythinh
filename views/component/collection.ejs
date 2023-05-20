@@ -1,0 +1,40 @@
+<% var link = rootDir + "/production/" + item.id %>
+<div class="grid__item large--one-quarter medium--one-quarter small--one-half md-pd-left15">
+    <div class="product-item text-center">
+        <div class="product-img">
+            <a href="/production/<%= item.id %>" id="imageToShow_<%= item.id %>">
+                <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover1" src="<%= item.colors[0].images[0] %>" />
+                <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover2" src="<%= item.colors[0].images[1] %>" />
+            </a>
+        </div>
+        <div class="list-variants-img medium--hide small--hide">
+            <div class="inner">
+                <ul class="no-bullets clearfix text-center">
+                    <% item.colors.forEach(function(color){ %>
+                        <li class="">
+                            <a href="#" class="variant-image-loop" onclick="showItemByColor('<%= item.id %>','<%= color.images[0] %>', '<%= color.images[1] %>')"  <%= 'style=background-color:'+color.color_id  %>>
+                            </a>
+                        </li>
+                        <!-- <li class="">
+                            <a class="variant-image-loop red"  href="products/premium-daily-backpack" title="Black" titlexx="black">
+                            </a>
+                        </li> -->
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+        <div class="product-info">
+            <div class="product-title">
+                <a onclick="ahc()" href="/production/<%= item.id %>">
+                    <%= item.name %>
+                </a>
+            </div>
+            <div class="product-price">
+                <span class="current-price">
+                    <%= item.price %> VND
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
