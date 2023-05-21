@@ -15,14 +15,16 @@
         {
           "id": "1",
           "name": "PREMIUM DAILY BACKPACK",
-          "price": "560.000",
+          "price": 590000,
+          "tags": ["","Best Seller", "New"],
           "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
-          "long_description": "",
+          "long_description": "<div>Signature <b>Backpack</b> là một trong những dòng balo thể hiện sự hiện đại, tối giản đúng với phong cách Camelia theo đuổi. Bên cạnh đó, chất liệu mới mà đội ngũ Camelia nghiên cứu hứa hẹn sẽ mang đến một trải nghiệm tuyệt vời. Thiết kế và chất liệu tạo nên Signature Backpack™.</div>",
+          "selled": 190,
           "attributes": [
-              "Kích thước: 42 x 29 x 15 cm",
-              "Chất liệu: Vải Polyester Canvas cao cấp chống thấm nước",
-              "Ngăn chống sốc: Đựng vừa laptop 14,5' "
-            ],
+            "Kích thước: 42 x 29 x 15 cm",
+            "Chất liệu: Vải Polyester Canvas cao cấp chống thấm nước",
+            "Ngăn chống sốc: Đựng vừa laptop 14,5' "
+          ],
           "colors": [
             {
               "color_id": "#212A3E",
@@ -45,7 +47,10 @@
         {
           "id": "abc",
           "name": "PREMIUM DAILY BACKPACK2",
-          "price": "560.000",
+          "price": 569000,
+          "tags": ["","Best Seller", "New"],
+          "selled": 90,
+          "long_description": "<div>Signature <b>Backpack</b> là một trong những dòng balo thể hiện sự hiện đại, tối giản đúng với phong cách Camelia theo đuổi. Bên cạnh đó, chất liệu mới mà đội ngũ Camelia nghiên cứu hứa hẹn sẽ mang đến một trải nghiệm tuyệt vời. Thiết kế và chất liệu tạo nên Signature Backpack™.</div>",
           "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
           "attributes": [
             "Kích thước: 42 x 29 x 15 cm",
@@ -74,7 +79,10 @@
         {
           "id": "3",
           "name": "PREMIUM DAILY BACKPAC3",
-          "price": "560.000",
+          "price": 610000,
+          "tags": ["Best Seller", ""],
+          "selled": 290,
+          "long_description": "<div>Signature <b>Backpack</b> là một trong những dòng balo thể hiện sự hiện đại, tối giản đúng với phong cách Camelia theo đuổi. Bên cạnh đó, chất liệu mới mà đội ngũ Camelia nghiên cứu hứa hẹn sẽ mang đến một trải nghiệm tuyệt vời. Thiết kế và chất liệu tạo nên Signature Backpack™.</div>",
           "short_description": "Lớp đệm chống sốc đặc biệt ở quai và lưng balo tạo cho bạn cảm giác thoải mái nhất khi sử dụng. Basic Backpack hoàn toàn xứng đáng với danh hiệu best-seller",
           "attributes": [
             "Kích thước: 42 x 29 x 15 cm",
@@ -99,6 +107,51 @@
               "availiable": true
             }
           ]
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "1090",
+      "date": "21/05/2023",
+      "history": [
+        {
+          "status": "checking",
+          "update_data": "12h 3/5/2023",
+          "note": "ghi chu them",
+          "update_by": "LLTa"
+        },
+        {
+          "status": "done",
+          "update_data": "16h 5/5/2023",
+          "note": "ghi chu them",
+          "update_by": "LLTa"
+        }
+      ],
+      "customer": {
+        "name": "Luu Truong Ta",
+        "email": "abc@gmail.com",
+        "sdt": "0910399934",
+        "address": {
+          "sonha": "34/2/102 Su Van Hanh",
+          "tinh": "HCM",
+          "huyen": "Q12",
+          "xa": "Tan Chanh Hiep"
+        }
+      },
+      "products": [
+        {
+          "id": "1",
+          "color": "#E57C23",
+          "price": 560000,
+          "quantiny": 1
+        },
+        {
+          "id": "abc",
+          "color": "#E57C23",
+          "price": 570000,
+          "quantiny": 1
         }
       ]
     }

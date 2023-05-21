@@ -12,7 +12,7 @@
                                         <div
                                             class="grid__item large--two-thirds medium--one-half small--one-whole pd-left5">
                                             <div class="collection-title">
-                                                <h1><%= pageData.collectionName %></h1>
+                                                <h1><%= pageData.collection.collectionName %></h1>
                                             </div>
                                         </div>
                                         <div
@@ -20,10 +20,10 @@
                                             <div class="collection-sorting-wrapper">
                                                 <div class="form-horizontal text-right">
                                                     <label htmlFor="SortBy">Sắp xếp theo</label>
-                                                    <select name="SortBy" id="SortBy">
-                                                        <option value="best-selling">Sản phẩm bán chạy</option>
-                                                        <option value="price-ascending">Giá từ thấp tới cao</option>
-                                                        <option value="price-descending">Giá từ cao tới thấp</option>
+                                                    <select onchange="handlerFilter('<%= pageData.collection._id %>',this.value)" name="SortBy" id="SortBy">
+                                                        <option <%= pageData.filter.sort==="best-selling" ? "selected" : "" %> value="best-selling">Sản phẩm bán chạy</option>
+                                                        <option <%= pageData.filter.sort==="price-up" ? "selected" : "" %> value="price-up">Giá từ thấp tới cao</option>
+                                                        <option <%= pageData.filter.sort==="price-down" ? "selected" : "" %> value="price-down">Giá từ cao tới thấp</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="collection-body">
                                     <div class="grid-uniform product-list md-mg-left-15">
-                                        <% pageData.products.forEach(function(item){ %>
+                                        <% pageData.collection.products.forEach(function(item){ %>
                                            <%- include('../component/collection', {item: item} ); %>
                                         <% }); %>
                                     </div>
@@ -43,22 +43,27 @@
                         </div>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: center;">
+                <!-- <div style="display: flex; justify-content: center;">
                     <div class="pagination">
-                        <a href="#">«</a>
                         <% for (var i =1; i <= pageData.totalPage;  i++ ) { %>
                             <% if (i === pageData.currentPage) { %>
-                                <a style="background-color: #5fc1eb; border-radius: 5px;color: aliceblue;" href="#"> <%= i %> </a>    
+                                <a style="background-color: #5fc1eb; border-radius: 5px;color: aliceblue;" href="/collections/<%= pageData._id %>?pageNumber=<%= i %>&sort=sale"> <%= i %> </a>    
                             <%} else { %>
                                 <a href="#"> <%= i %> </a>    
                             <% } %>
                         <% } %>
-                        <a href="#">»</a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </section>
 
     </main>
 </div>
+
+<script>
+    const handlerFilter = (id, value) =>{
+        const url = `/collections/${id}?pageNumber=1&sort=${value}`
+        window.location.href=url
+    }
+</script>

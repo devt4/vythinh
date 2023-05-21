@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var database = require("../data.json")
+const { getCollectionById } = require('../services/collectionsService');
+const { defaultFilter } = require("../const/const")
 
-const collection = database.collection[0]
-
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function (req, res, next) {
   const id = req.params.id
-  res.render('index', { pageName: "collections", pageData: collection });
+  let filter = defaultFilter
+  if (req.query.sort) {
+    filter = req.query
+  }
+
+  console.log(filter);
+  const collection = getCollectionById(id, filter)
+  res.render('index', { pageName: "collections", pageData: {collection: collection, filter: filter} });
 });
 
 module.exports = router;
