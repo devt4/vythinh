@@ -1,267 +1,395 @@
-<header id="header">
-        <div class="header-desktop">
-            <div class="header-top" style=" background-color: #5fc1eb ">
-                <div class="wrapper">
-                    <div class="inner">
-                        <div class="grid flex align-center">
-                            <div class="grid__item large--one-quarter medium--one-half small--seven-twelfths gutter-small">
-                                <div class="hd-top-left">
-                                    <a class="new-iconss" href="/">
-                                        <p style=" color: #ffffff; font-size: 18px">
-                                            Lamapex ®
-                                        </p>
-                                    </a>
-                                </div>
+<header id="header" onloadstart="getCart()">
+    <div class="header-desktop">
+        <div class="header-top" style=" background-color: #5fc1eb ">
+            <div class="wrapper">
+                <div class="inner">
+                    <div class="grid flex align-center">
+                        <div class="grid__item large--one-quarter medium--one-half small--seven-twelfths gutter-small">
+                            <div class="hd-top-left">
+                                <a class="new-iconss" href="/">
+                                    <p style=" color: #ffffff; font-size: 18px">
+                                        Lamapex ®
+                                    </p>
+                                </a>
                             </div>
-                            <div class="grid__item large--three-quarters medium--one-half small--five-twelfths gutter-small">
-                                <div class="hd-top-right">
-                                    <ul class="no-bullets">
-                                        <li>
-                                            <img alt="Tìm kiếm" class="not-hover" src="/rs/dienthoaido.svg?v=139" style=" width: 12px; vertical-align: initial " />
-                                            <a style=" color: #ffffff " href="#">
-                                                <%= info.phone %>
-                                            </a>
-                                        </li>
-                                        <li class="medium--hide small--hide">
-                                            <span>
-                                                <img alt="Tìm kiếm" class="not-hover" src="/rs/maildo.svg?v=139" style=" width: 12px; vertical-align: initial " />
-                                            </span>
-                                            <a style=" color: #ffffff " href="lamapexvn@gmail.com">
-                                                <%= info.email %>
-                                            </a>
-                                        </li>
-                                        <li class="medium--hide small--hide">
+                        </div>
+                        <div
+                            class="grid__item large--three-quarters medium--one-half small--five-twelfths gutter-small">
+                            <div class="hd-top-right">
+                                <ul class="no-bullets">
+                                    <li>
+                                        <img alt="Tìm kiếm" class="not-hover" src="/rs/dienthoaido.svg?v=139"
+                                            style=" width: 12px; vertical-align: initial " />
+                                        <a style=" color: #ffffff " href="#">
+                                            <%= info.phone %>
+                                        </a>
+                                    </li>
+                                    <li class="medium--hide small--hide">
+                                        <span>
+                                            <img alt="Tìm kiếm" class="not-hover" src="/rs/maildo.svg?v=139"
+                                                style=" width: 12px; vertical-align: initial " />
+                                        </span>
+                                        <a style=" color: #ffffff " href="lamapexvn@gmail.com">
+                                            <%= info.email %>
+                                        </a>
+                                    </li>
+                                    <li class="medium--hide small--hide">
+                                        <div class="wrap_seach search-collection" id="pos_search_top">
+                                            <div>
+                                                <input name="type" type="hidden" defaultValue="product" />
+                                                <input onkeypress="handlerSearchEnter(event)" id="keywords"
+                                                    autoComplete="off" class="ac_input" data-history name="q"
+                                                    placeholder="Nhập tên sản phẩm..." type="text" />
+
+                                                <button onclick="handlerSearch()" class="btn btn-default submit_search"
+                                                    name="submit_search" type="button" value="Search">
+                                                    <img class="searchcus" src="/rs/searchxxx.png?v=139" />
+                                                </button>
+                                                <ul class="search-results" id="search-results" style=" display: none ">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="desktop-search-wrapper hide text-right">
+                                        <a>
+                                            <div class="hd-link-icon">
+                                                <img alt="Tìm kiếm" class="not-hover"
+                                                    src="/rs/hd_mainmenu_icon_search.png?v=139" />
+                                                <img alt="Tìm kiếm" class="hover"
+                                                    src="/rs/hd_mainmenu_icon_search_hover.png?v=139" />
+                                            </div>
+                                            <div class="hd-link-title">
+                                                Tìm kiếm
+                                            </div>
+                                        </a>
+                                        <div class="header-search">
+                                            <h3>
+                                                Tìm kiếm
+                                                <span class="btnCloseSearch">
+                                                    <i aria-hidden="true" class="fa fa-times">
+                                                    </i>
+                                                </span>
+                                            </h3>
                                             <div class="wrap_seach search-collection" id="pos_search_top">
-                                                <form action="search" id="searchbox">
+                                                <div>
                                                     <input name="type" type="hidden" defaultValue="product" />
-                                                    <input autoComplete="off" class="ac_input" data-history name="q" placeholder="Nhập tên sản phẩm..." type="text" />
-                                                    <button class="btn btn-default submit_search" name="submit_search" type="submit" value="Search">
+                                                    <input onkeypress="handlerSearchEnter(event)" id="keywords"
+                                                        class="ac_input" placeholder="Nhập tên sản phẩm..."
+                                                        type="text" />
+
+                                                    <button onclick="handlerSearch()"
+                                                        class="btn btn-default submit_search" name="submit_search"
+                                                        type="button" value="Search">
                                                         <img class="searchcus" src="/rs/searchxxx.png?v=139" />
                                                     </button>
-                                                    <ul class="search-results" id="search-results" style=" display: none ">
+                                                    <ul class="search-results" id="search-results"
+                                                        style=" display: none ">
                                                     </ul>
-                                                </form>
-                                            </div>
-                                        </li>
-                                        <li class="desktop-search-wrapper hide text-right">
-                                            <a>
-                                                <div class="hd-link-icon">
-                                                    <img alt="Tìm kiếm" class="not-hover" src="/rs/hd_mainmenu_icon_search.png?v=139" />
-                                                    <img alt="Tìm kiếm" class="hover" src="/rs/hd_mainmenu_icon_search_hover.png?v=139" />
-                                                </div>
-                                                <div class="hd-link-title">
-                                                    Tìm kiếm
-                                                </div>
-                                            </a>
-                                            <div class="header-search">
-                                                <h3>
-                                                    Tìm kiếm
-                                                    <span class="btnCloseSearch">
-                                                        <i aria-hidden="true" class="fa fa-times">
-                                                        </i>
-                                                    </span>
-                                                </h3>
-                                                <div class="wrap_seach search-collection" id="pos_search_top">
-                                                    <form action="search" id="searchbox">
-                                                        <input name="type" type="hidden" defaultValue="product" />
-                                                        <input autoComplete="off" class="ac_input" data-history name="q" placeholder="Nhập tên sản phẩm..." type="text" />
-                                                        <button class="btn btn-default submit_search" name="submit_search" type="submit" value="Search">
-                                                            <img class="searchcus" src="/rs/searchxxx.png?v=139" />
-                                                        </button>
-                                                        <ul class="search-results" id="search-results" style=" display: 'none' ">
-                                                        </ul>
-                                                    </form>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li class="desktop-cart-wrapper">
-                                            <a >
-                                                <div class="hd-link-icon">
-                                                    <img id="click-to-show-menu"  alt="Giỏ hàng" class="hover" src="/rs/giohang.svg?v=139" style=" width: 30px" />
-                                                    <span class="hd-cart-count">
-                                                        0
-                                                    </span>
-                                                </div>
-                                            </a>
-                                            <div id="model-quickview-cart" style=" display: none " class="quickview-cart">
-                                                <div id="modalAddComplete_inside" class="modalAddComplete-content show">
-                                                    <span id="modalAddComplete-close" class="modalAddComplete-close">
-                                                    </span>
-                                                    <div class="modalAddComplete-body">
-                                                        <div style=" display: 'flex'; align-items: 'center'; justify-content: 'space-between' " class="modal-cart-status">
-                                                            <h2>
-                                                                <a href="#" class="modalAddComplete-close"> Giỏ hàng </a>
-                                                            </h2>
-                                                            <svg class="svg-inline--fa fa-reply fa-w-16" aria-hidden="true" data-prefix="fa" data-icon="reply" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg><path fill="currentColor" d="M8.309 189.836L184.313 37.851C199.719 24.546 224 35.347 224 56.015v80.053c160.629 1.839 288 34.032 288 186.258 0 61.441-39.581 122.309-83.333 154.132-13.653 9.931-33.111-2.533-28.077-18.631 45.344-145.012-21.507-183.51-176.59-185.742V360c0 20.7-24.3 31.453-39.687 18.164l-176.004-152c-11.071-9.562-11.086-26.753 0-36.328z" /></svg>
-                                                        </div>
-                                                        <form action="/cart" method="post" noValidate class="cart table-wrap added-form">
-                                                            <div class="modal-main-cart">
-                                                                <div class="mobile-modal-tbl-cart">
-                                                                    <ul class="no-bullets">
-                                                                        <li class="cart-item">
-                                                                            <div class="grid mg-left-10">
-                                                                                <div class="grid__item one-third pd-left10">
-                                                                                    <div class="cart-item-img">
-                                                                                        <a href="/products/mini-backpack">
-                                                                                            <img />
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="grid__item two-thirds pd-left10">
-                                                                                    <div class="cart-item-info">
-                                                                                        <div class="cart-item-title">
-                                                                                            <a href="/products/mini-backpack">
-                                                                                                MINI BACKPACK
-                                                                                            </a>
-                                                                                            <small class="product-variant">Phiên bản: Black</small>
-                                                                                        </div>
-                                                                                        <div class="cart-item-actions">
-                                                                                            <span>Số lượng: 1</span>
-                                                                                        </div>
-                                                                                        <div class="cart-item-price clearfix">
-                                                                                            <span class="current-price">370,000₫</span>
-                                                                                            <a href="/cart/change?line=1&quantity=0" class="cart__remove">Xóa</a>
-                                                                                        </div>
-                                                                                    </div>
+                                        </div>
+                                    </li>
+                                    <li class="desktop-cart-wrapper">
+                                        <a>
+                                            <div class="hd-link-icon" id="click-to-show-menu">
+                                                <img  alt="Giỏ hàng" class="hover"
+                                                    src="/rs/giohang.svg?v=139" style=" width: 30px" />
+                                                <span id="hd-cart-count" class="hd-cart-count">
+                                                    0
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div id="model-quickview-cart" style=" display: none " class="quickview-cart">
+                                            <div id="modalAddComplete_inside" class="modalAddComplete-content show">
+                                                <span id="modalAddComplete-close" class="modalAddComplete-close">
+                                                </span>
+                                                <div class="modalAddComplete-body">
+                                                    <div style=" display: 'flex'; align-items: 'center'; justify-content: 'space-between' "
+                                                        class="modal-cart-status">
+                                                        <h3>
+                                                            <a href="#" class=""> Giỏ hàng </a>
+                                                        </h3>
+
+                                                    </div>
+
+                                                    <form action="/cart" method="post" noValidate
+                                                        class="cart table-wrap added-form">
+                                                        <div class="modal-main-cart">
+                                                            <div id="carts-list" class="mobile-modal-tbl-cart">
+                                                                
+                                                            </div>
+                                                            <div class="modal-checkout-actions" >
+                                                                <div class="grid">
+                                                                    <div class="grid__item large--one-whole">
+                                                                        <div class="modal-cart-checkout text-right" style="margin: 10px;">
+                                                                            <div class="modal-cart-sum">
+                                                                                <div
+                                                                                    style="font-weight: 700; color: #5fc1eb; font-size: 20px;">
+                                                                                    TỔNG: <span id="tong-tien"></span> đ
                                                                                 </div>
                                                                             </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="modal-checkout-actions">
-                                                                    <div class="grid">
-                                                                        <div class="grid__item large--one-whole">
-                                                                            <div class="modal-cart-checkout text-right">
-                                                                                <div class="modal-cart-sum">
-                                                                                    <h3>Tổng: <span>370,000₫</span></h3>
-                                                                                </div>
-                                                                                <div class="modal-cart-actions clearfix">
-                                                                                    <a href="/cart" class="btnRefreshModal">Điều chỉnh</a>
-                                                                                    <a href="/checkout" class="btnProceedCheckout">Thanh toán</a>
-                                                                                </div>
+                                                                            <div class="modal-cart-actions clearfix" style="margin: 10px; display: flex; justify-content: end;">
+                                                                                <!-- <a href="/cart" class="btnRefreshModal"
+                                                                                    style="padding: 10px; text-align: center; border-radius: 5px;">Điều
+                                                                                    chỉnh</a> -->
+                                                                                <a href="/checkouts"
+                                                                                    class="btnProceedCheckout"
+                                                                                    style="padding: 10px;border-radius: 5px; text-align: center; background-color: #5fc1eb !important;border: none;width: 50%;">Thanh
+                                                                                    toán</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </form>
-                                                    </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header-bottom">
-                <div class="wrapper">
-                    <div class="inner">
-                        <div class="grid mg-left-15 flex align-center">
-                            <div class="grid__item large--one-whole pd-left15" style=" padding-top: 10px !important; ">
-                                <div class="flex_row">
-                                    <div class="item1x">
-                                        <ul class="no-bullets">
-                                            <li >
-                                                <a class="menu-text" href="/about">
-                                                    About us
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/address">
-                                                    Address
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="header-logo">
-                                        <h1>
-                                            <a href="/">
-                                                <img src="/rs/img/logo.png" width={150} />
-                                            </a>
-                                        </h1>
-                                    </div>
-                                    <div class="item1x">
-                                        <ul class="no-bullets">
-                                            <li >
-                                                <a href="/blog">
-                                                    Blog
-                                                </a>
-                                            </li>
-                                            <li >
-                                                <a href="/contact">
-                                                    Contact
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="header-navbar" style="background-color:#5fc1eb; width: 100%; border-radius: 5px; overflow:'hidden' ">
-                                    <ul class="no-bullets" style="padding-top: 8px">
-                                        <li style="border-radius: 5px ; overflow: 'hidden'">
-                                            <a class="text-center" href="/collections/backpacks" >
-                                                <div class="hd-link-icon">
-                                                    <img alt="Backpacks" class="not-hover" src="/rs/img/balo3.png" />
-                                                    <img alt="Backpacks" class="hover" src="/rs/img/backpack1.png" />
-                                                </div>
-                                                <div class="hd-link-title1">
-                                                    Balo Nam
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a class="text-center" href="/collections/wallets">
-                                                <div class="hd-link-icon">
-                                                <img alt="Backpacks" class="not-hover" src="/rs/img/balo2.png" />
-                                                    <img alt="Backpacks" class="hover" src="/rs/img/balo1.png" />
-                                                </div>
-                                                <div class="hd-link-title1">
-                                                    Balo Nữ
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a class="text-center" href="/collections/accessories">
-                                                <div class="hd-link-icon">
-                                                    <img alt="Tote & Accessories" class="not-hover" src="/rs/img/bags.png" />
-                                                    <img alt="Tote & Accessories" class="hover" src="/rs/img/bag1.png" />
-                                                </div>
-                                                <div class="hd-link-title1">
-                                                    Túi Xách
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a class="text-center" href="/collections/crossbody-bags">
-                                                <div class="hd-link-icon">
-                                                    <img alt="Crossbody bags" class="not-hover" src="/rs/img/tuicheo2.png" />
-                                                    <img alt="Crossbody bags" class="hover" src="/rs/img/tuicheo1.png" />
-                                                </div>
-                                                <div class="hd-link-title1">
-                                                    Túi Đeo Chéo
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li >
-                                            <a class="text-center" href="/collections/crossbody-bags">
-                                                <div class="hd-link-icon">
-                                                    <img alt="Crossbody bags" class="not-hover" src="/rs/img/tuixach1.png" />
-                                                    <img alt="Crossbody bags" class="hover" src="/rs/img/accessories.png" />
-                                                </div>
-                                                <div class="hd-link-title1">
-                                                    Phụ Kiện
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+
+        <div class="header-bottom">
+            <div class="wrapper">
+                <div class="inner">
+                    <div class="grid mg-left-15 flex align-center">
+                        <div class="grid__item large--one-whole pd-left15" style=" padding-top: 10px !important; ">
+                            <div class="flex_row">
+                                <div class="item1x">
+                                    <ul class="no-bullets">
+                                        <li>
+                                            <a class="menu-text" href="/about">
+                                                About us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/address">
+                                                Address
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header-logo">
+                                    <h1>
+                                        <a href="/">
+                                            <img src="/rs/img/logo.png" width={150} />
+                                        </a>
+                                    </h1>
+                                </div>
+                                <div class="item1x">
+                                    <ul class="no-bullets">
+                                        <li>
+                                            <a href="/blog">
+                                                Blog
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">
+                                                Contact
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="header-navbar"
+                                style="background-color:#5fc1eb; width: 100%; border-radius: 5px; overflow:'hidden' ">
+                                <ul class="no-bullets" style="padding-top: 8px">
+                                    <li style="border-radius: 5px ; overflow: 'hidden'">
+                                        <a class="text-center" href="/collections/backpacks">
+                                            <div class="hd-link-icon">
+                                                <img alt="Backpacks" class="not-hover" src="/rs/img/balo3.png" />
+                                                <img alt="Backpacks" class="hover" src="/rs/img/backpack1.png" />
+                                            </div>
+                                            <div class="hd-link-title1">
+                                                Balo Nam
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-center" href="/collections/wallets">
+                                            <div class="hd-link-icon">
+                                                <img alt="Backpacks" class="not-hover" src="/rs/img/balo2.png" />
+                                                <img alt="Backpacks" class="hover" src="/rs/img/balo1.png" />
+                                            </div>
+                                            <div class="hd-link-title1">
+                                                Balo Nữ
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-center" href="/collections/accessories">
+                                            <div class="hd-link-icon">
+                                                <img alt="Tote & Accessories" class="not-hover"
+                                                    src="/rs/img/bags.png" />
+                                                <img alt="Tote & Accessories" class="hover" src="/rs/img/bag1.png" />
+                                            </div>
+                                            <div class="hd-link-title1">
+                                                Túi Xách
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-center" href="/collections/crossbody-bags">
+                                            <div class="hd-link-icon">
+                                                <img alt="Crossbody bags" class="not-hover"
+                                                    src="/rs/img/tuicheo2.png" />
+                                                <img alt="Crossbody bags" class="hover" src="/rs/img/tuicheo1.png" />
+                                            </div>
+                                            <div class="hd-link-title1">
+                                                Túi Đeo Chéo
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-center" href="/collections/crossbody-bags">
+                                            <div class="hd-link-icon">
+                                                <img alt="Crossbody bags" class="not-hover"
+                                                    src="/rs/img/tuixach1.png" />
+                                                <img alt="Crossbody bags" class="hover" src="/rs/img/accessories.png" />
+                                            </div>
+                                            <div class="hd-link-title1">
+                                                Phụ Kiện
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    const handlerSearch = () => {
+        const keywords = document.getElementById("keywords").value
+        const url = `/search?keywords=${keywords}`
+        window.location.href = url
+    }
+
+    function handlerSearchEnter(event) {
+        if (event.key === "Enter") {
+            const keywords = document.getElementById("keywords").value
+            console.log(keywords);
+            const url = `/search?keywords=${keywords}`
+            window.location.href = url
+        }
+    }
+
+
+
+    // Get data from local storage
+    function getFromLocalStorage(key) {
+        var data = localStorage.getItem(key);
+        return JSON.parse(data);
+    }
+    function renderCart() {
+        const carts = getFromLocalStorage("carts")
+        let htmlString = ""
+        let sum = 0;
+        carts.forEach(cart => {
+            sum += cart.soluong * cart.price;
+            htmlString += `<li class="">
+                                <div class="">
+                                    <div
+                                        class="">
+                                        <div class="">
+                                            <div class="cart-item-title">
+                                                <div><b>${cart.name}</b></div>
+                                                <div class="product-variant" style="display: flex" ><p>Phiên bản:   </p> <p style="background-color:${cart.color}; width: 20px; height: 20px; margin-left: 10px"    ></p> </div>
+                                            </div>
+                                            <div style="display: flex; flex-direction: column;">
+                                                
+                                                <div class="">
+                                                    <div>Số lượng: <input min=0 onblur="handleChangeSL('${cart.id}','${cart.color}')" type="number" height="30px" value=${cart.soluong} />  </div>
+                                                </div>
+                                                <div class="cart-item-price clearfix">
+                                                    <div>Giá: ${cart.soluong * cart.price}đ</div>
+                                                </div>
+                                                <div class="cart-item-price clearfix" style="margin-top: 10px">
+                                                    <a onclick="removeItem('${cart.id}','${cart.color}')" style="color: red; cursor: pointer;" class="current-price">Xóa</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <hr>
+                            `
+        });
+
+        let rsHTML = ""
+        if (carts.length===0) {
+            rsHTML="Giỏ hàng trống"
+        }else{
+            rsHTML=`<ul id="carts-list" class="no-bullets" style="display: flex; flex-direction: column; ">
+                                                                ${htmlString}
+                                                            </ul>`
+        }
+
+        document.getElementById("tong-tien").innerText = `${sum}`
+        document.getElementById("hd-cart-count").innerText = carts.length
+        document.getElementById("carts-list").innerHTML = rsHTML
+    }
+    window.onload = function () {
+        renderCart()
+    }
+
+
+    function handleChangeSL(id, color) {
+        const sl = this.event.target.value;
+        if (sl == 0) {
+            removeItem(id, color)
+        } else {
+            let carts = getFromLocalStorage("carts")
+
+            for (let index = 0; index < carts.length; index++) {
+                let product = carts[index];
+                if (product.id == id && product.color == color) {
+                    product.soluong = sl;
+                    break;
+                }
+            }
+
+            saveToLocalStorage("carts", carts)
+            renderCart()
+            renderTable()
+        }
+
+    }
+
+    function removeItem(id, color) {
+        const is_del = confirm("Bạn muốn xóa khỏi giỏ hàng ?")
+        if (is_del) {
+            let carts = getFromLocalStorage("carts")
+            for (let index = 0; index < carts.length; index++) {
+                let product = carts[index];
+                if (product.id == id && product.color == color) {
+                    carts.splice(index, 1)
+                }
+            }
+            saveToLocalStorage("carts", carts)
+            renderCart()
+            renderTable()
+        }
+    }
+
+
+    document.getElementById("click-to-show-menu").addEventListener("click", (e) => {
+        let el = document.getElementById("model-quickview-cart");
+        if (el.style.display === "none") {
+            el.style.display = "block"
+        } else {
+            el.style.display = "none"
+        }
+    })
+
+</script>

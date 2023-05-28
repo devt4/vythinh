@@ -2,10 +2,10 @@
 <html>
 <%- include('component/head'); %>
 
-<body class="template-index" id="camelia-brand-more-than-simplicity">
+  <body class="template-index" id="camelia-brand-more-than-simplicity">
     <%- include('component/header', {info: brandInfo}); %>
-    <%- include('pages/'+pageName, {data: pageData}); %>
-    <%- include('component/footer', {info: brandInfo}); %>
+      <%- include('pages/'+pageName, {data: pageData}); %>
+        <%- include('component/footer', {info: brandInfo}); %>
   </body>
   <script src="/rs/js/index.js"></script>
   <script>
@@ -53,15 +53,23 @@
     });
   </script>
   <script>
-    const showItemByColor = (id, image1, image2)=>{
-        event.preventDefault();
-        const htmlString = `<img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover1" src="${image1}" />
+    const showItemByColor = (id, image1, image2) => {
+      event.preventDefault();
+      const htmlString = `<img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover1" src="${image1}" />
                 <img alt="PREMIUM DAILY BACKPACK" class="lazyload imghover2" src="${image2}" />`
-        
-        let imageToShow = document.getElementById(`imageToShow_${id}`)
 
-        imageToShow.innerHTML=htmlString
+      let imageToShow = document.getElementById(`imageToShow_${id}`)
+
+      imageToShow.innerHTML = htmlString
     }
-</script>
+    function saveToLocalStorage(key, data) {
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+    function resetCart() {
+      localStorage.setItem("carts", JSON.stringify([]))
+      renderCart()
+      renderTable()
+    }
+  </script>
 
 </html>

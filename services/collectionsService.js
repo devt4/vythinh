@@ -1,80 +1,34 @@
-const database = require("../data.json")
 const { defaultFilter, PRICE_DOWN, PRICE_UP, BSL } = require("../const/const")
+const clientPromise =  require("../libs/mongodb-client")
+const {filterProductionsByTags, sortProductions} = require("../libs/collection-until")
 
-const getCollectionById = (id, filter) => {
-    const database = require("../data.json")
-    for (let index = 0; index < database.collection.length; index++) {
-        const element = database.collection[index];
-        if (element._id === id) {
-            return { ...element, products: _sortProductions(element.products, sort = filter.sort) }
-        }
-    }
-    return {}
+const getCollectionById = async (id, filter) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").findOne({ "_id": id })
+   
+    return { ...rs, products: sortProductions(rs.products, sort = filter.sort) }
 }
 
-const getCollections = (tags=[]) => {
-    const database = require("../data.json")
-    let rs = database.collection
+const getCollections = async (tags = []) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").find({}).toArray()
     for (let index = 0; index < rs.length; index++) {
-        rs[index] = {...rs[index], products: filterProductionsByTags(rs[index].products, tags)}
+        rs[index] = { ...rs[index], products: filterProductionsByTags(rs[index].products, tags) }
     }
     return rs;
-
 }
 
-const filterProductionsByTags = (listProduct = [], tagsCheck = []) => {
-    let rs = []
-    for (let index = 0; index < listProduct.length; index++) {
-        const element = listProduct[index];
-        if (_check(element.tags, tagsCheck)) {
-            rs.push(element)
-        }
-    }
-    console.log(`product by tag: ${rs.length}`);
+const findCollectionByProductId= async (idProduct) =>{
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").findOne({ "products.id": idProduct })
     return rs
-}
-
-
-const _check =(tagsPro=[], tagsCheck=[])=>{
-    for (let index = 0; index < tagsPro.length; index++) {
-        const tPro = tagsPro[index];
-        for (let index = 0; index < tagsCheck.length; index++) {
-            const tCheck = tagsCheck[index];
-            if (tCheck===tPro) {
-                console.log("co tag trung" + tCheck + tPro);
-                return true
-            }
-             
-        }
-    }
-    return false
-}
-
-const _sortProductions = (list = [], sort) => {
-
-    list.sort((a, b) => {
-        if (sort === PRICE_UP) {
-            if (a.price < b.price) return -1;
-            if (a.price > b.price) return 1;
-            return 0
-        }
-        if (sort === PRICE_DOWN) {
-            if (a.price < b.price) return 1;
-            if (a.price > b.price) return -1;
-            return 0
-        }
-        if (sort === BSL) {
-            if (a.selled < b.selled) return 1;
-            if (a.selled > b.selled) return -1;
-            return 0
-        }
-
-    })
-    console.log(list);
-    return list
 }
 
 module.exports = {
     getCollectionById: getCollectionById,
-    getCollections: getCollections
+    getCollections: getCollections,
+    findCollectionByProductId: findCollectionByProductId
 }

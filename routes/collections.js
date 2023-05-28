@@ -9,10 +9,9 @@ router.get('/:id', function (req, res, next) {
   if (req.query.sort) {
     filter = req.query
   }
-
-  console.log(filter);
-  const collection = getCollectionById(id, filter)
-  res.render('index', { pageName: "collections", pageData: {collection: collection, filter: filter} });
+  getCollectionById(id, filter).then((collection)=>{
+    res.render('index', { pageName: "collections", pageData: {collection: collection, filter: filter} });
+  })
 });
 
 module.exports = router;

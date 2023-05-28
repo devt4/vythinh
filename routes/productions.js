@@ -1,23 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var database = require("../data.json");
 const { getDetailById, getColorById } = require('../services/productsService');
+const { sortProductions } = require('../libs/collection-until');
+const { BSL } = require('../const/const');
+const { findCollectionByProductId } = require('../services/collectionsService');
 
-const rltProducts = database.collection[0].products
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', async function(req, res, next) {
   const id = req.params.id
-  product = getDetailById(id)
+  const product = await getDetailById(id)
+  const rltCollect = await findCollectionByProductId(id)
+
   res.render('index', { pageName: "production", pageData: {
     product: product,
-    relativeProductions: rltProducts
+    relativeProductions: sortProductions(rltCollect.products, BSL).filter((e, i)=>e.id != product.id).slice(0, 5)
   } });
+  
 });
 
 router.get('/colors/:id', function(req, res, next) {
   const id = req.params.id
-  const colors = getColorById(id)
-  res.json({colors: colors})
+  getColorById(id).then((colors)=>{
+    res.json({colors: colors})
+  })
+  
 });
 
 module.exports = router;

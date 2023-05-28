@@ -5,11 +5,13 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  const collections = getCollections(["New"])
-  res.render('index', { pageName: "index", pageData: {
-    bannerImages: database.bannerImages,
-    collections: collections
-  } });
+  getCollections(["New"]).then((data)=>{
+    res.render('index', { pageName: "index", pageData: {
+      bannerImages: database.bannerImages,
+      collections: data
+    }});
+  })
+  
 });
 
 module.exports = router;

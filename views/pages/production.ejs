@@ -1,4 +1,11 @@
 <section id="product-wrapper" onload="getListImage('<%= pageData.product.id %>')">
+    <div style="display: none;">
+        <input name="id" value="<%= pageData.product.id %>">
+        <input name="name" value="<%= pageData.product.name %>">
+        <input type="number" name="price" value="<%= pageData.product.price %>">
+        <input id="curent-color" name="color" value="<%= pageData.product.colors[0].color_id %>">
+
+    </div>
 
     <div class="wrapper">
         <div class="inner">
@@ -10,7 +17,7 @@
                                 <div class="product-single__photos" id="ProductPhoto">
                                     <div class="">
                                         <a href="" id="js-featured-image" data-original="">
-                                            <img class="product-image-feature"
+                                            <img name="main-img" class="product-image-feature"
                                                 src="<%= pageData.product.colors[0].images[0] %>"
                                                 data-zoom-image="" id="ProductPhotoImg" />
                                         </a>
@@ -78,7 +85,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <form action="/cart/add" method="post" encType="multipart/form-data"
+                                    <form method="post" encType="multipart/form-data"
                                         id="AddToCartForm" class="form-vertical">
                                         <div class="product-variants-wrapper">
                                             <div id="product-select-watch" class="select-swatch">
@@ -93,6 +100,7 @@
                                                                 <input class="variant-0 input-product"
                                                                     id="<%= color.color_id %>" type="radio"
                                                                     name="<%= color.color_id %>"
+                                                                    
                                                                     data-img-src="<%= color.images[0] %>" 
                                                                    
                                                                     />
@@ -118,15 +126,14 @@
                                 <div class="product-quantity clearfix">
                                     <div class="qty-addcart clearfix" style="display: flex; align-items: center;">
                                         <span>Số lượng </span>
-                                        <input type="number" id="Quantity" name="quantity" defaultValue={1} min={1}
-                                            class="quantity-selector" />
+                                        <input type="number" id="Quantity" name="soluong" class="" value="1" min="1" />
                                     </div>
                                 </div>
                                 <div class="product-actions clearfix">
-                                    <button type="submit" name="add" id="AddToCart" class="btnAddToCart"><b>Thêm vào
+                                    <button type="button" name="add" id="AddToCart" class="btnAddToCart"><b>Thêm vào
                                             giỏ</b></button>
-                                    <button type="button" name="buy" id="buy-now" class="btnBuyNow"><b>Mua
-                                            ngay</b></button>
+                                    <a href="/checkouts" name="buy" id="buy-now" class="btnBuyNow"><b>Mua
+                                            ngay</b></a>
                                 </div>
                                 </form>
                             </div>
@@ -180,6 +187,49 @@
 </section>
 
 <script>
+    const pid = document.getElementsByName("id")[0]
+    const pname = document.getElementsByName("name")[0]
+    const price = document.getElementsByName("price")[0]
+    const pcolor = document.getElementsByName("color")[0]
+    const sl = document.getElementsByName("soluong")[0]
+    const image = document.getElementsByName("main-img")[0]
+
+    function saveToLocalStorage(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    
+
+    document.getElementById("AddToCart").addEventListener("click", (e)=>{
+        const cart = {
+            id: pid.value,
+            name: pname.value,
+            price: price.value,
+            color: pcolor.value,
+            soluong: sl.value,
+            image: image.src
+        }
+        let status = true
+        let carts = getFromLocalStorage("carts")
+        if (carts==null) {
+            carts=[]
+        }
+        for (let index = 0; index < carts.length; index++) {
+            const element = carts[index];
+            if (element.id === cart.id && element.color === cart.color) {
+                element.soluong=parseInt(element.soluong)+parseInt(cart.soluong)
+                status=false
+                break
+            }
+        }
+        if (status) {
+            carts.push(cart)
+        }
+        saveToLocalStorage("carts", carts)
+        renderCart()
+        console.log(cart);
+        alert("Thêm vào giỏ hàng thành công !")
+    })
     const getColors = async (id)=>{
         const rs = await fetch(`/production/colors/${id}`)
         const listColor = await rs.json()
@@ -195,7 +245,6 @@
 
     const pickColor =async (id_col, pro_id)=> {
         const cols = await getColors(pro_id)
-        console.log(id_col);
         let htmlString=""
         let firstImage = ""
         cols.colors.map((color)=>{
@@ -218,6 +267,7 @@
         ProductPhotoImg.setAttribute("src", firstImage)
 
         document.getElementById("slide-content").innerHTML= htmlString
-
+        document.getElementsByName("color")[0].value=id_col
+        
     }
 </script>

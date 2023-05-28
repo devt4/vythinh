@@ -1,0 +1,56 @@
+<div id="PageContainer">
+    <main class="main-content" role="main">
+
+        <section id="collection-wrapper">
+            <div class="wrapper">
+                <div class="inner">
+                    <div class="grid mg-left-12">
+                        <div class="grid__item medium--one-whole small--one-whole pd-left12">
+                            <div class="collection-content-wrapper">
+                                <div class="collection-head">
+                                    <div class="grid mg-left-5">
+                                        <div
+                                            class="grid__item large--two-thirds medium--one-half small--one-whole pd-left5">
+                                            <div class="collection-title">
+                                                <h1>Kết quả tìm kiếm: <%= pageData.keywords %></h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-body">
+                                    <div class="grid-uniform product-list md-mg-left-15">
+                                        <% pageData.products.forEach(function(item){ %>
+                                           <%- include('../component/collection', {item: item} ); %>
+                                        <% }); %>
+                                    </div>
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div style="display: flex; justify-content: center;">
+                    <div class="pagination">
+                        <% for (var i =1; i <= pageData.totalPage;  i++ ) { %>
+                            <% if (i === pageData.currentPage) { %>
+                                <a style="background-color: #5fc1eb; border-radius: 5px;color: aliceblue;" href="/collections/<%= pageData._id %>?pageNumber=<%= i %>&sort=sale"> <%= i %> </a>    
+                            <%} else { %>
+                                <a href="#"> <%= i %> </a>    
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div> -->
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script>
+    const handlerFilter = (id, value) =>{
+        const url = `/collections/${id}?pageNumber=1&sort=${value}`
+        window.location.href=url
+    }
+</script>

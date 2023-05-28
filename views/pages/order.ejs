@@ -1,0 +1,332 @@
+<style>
+  /* 
+body {
+  background-color: var(--color-background);
+  display: grid;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  margin: 0;
+  min-block-size: 100vh;
+  padding: 5vmin;
+  place-items: center;
+} */
+
+  address {
+    font-style: normal;
+  }
+
+  button {
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+    line-height: 1.2;
+    margin-block: 0 1.5em;
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+    line-height: 1.2;
+    margin-block: 0 0.5em;
+  }
+
+  legend {
+    font-weight: 600;
+    margin-block-end: 0.5em;
+    padding: 0;
+  }
+
+  input {
+    border: 0;
+    color: inherit;
+    font: inherit;
+  }
+
+  input[type="radio"] {
+    accent-color: var(--color-primary);
+  }
+
+  table {
+    border-collapse: collapse;
+    inline-size: 100%;
+  }
+
+  tbody {
+    color: #b4b4b4;
+  }
+
+  td {
+    padding-block: 0.125em;
+  }
+
+  tfoot {
+    border-top: 1px solid #b4b4b4;
+    font-weight: 600;
+  }
+
+  .align {
+    display: grid;
+    place-items: center;
+  }
+
+  .button {
+    align-items: center;
+    background-color: var(--color-primary);
+    border-radius: 999em;
+    color: #fff;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    padding-block: 0.75em;
+    padding-inline: 1em;
+    transition: 0.3s;
+  }
+
+  .button:focus,
+  .button:hover {
+    background-color: #e96363;
+  }
+
+  .button--full {
+    inline-size: 100%;
+  }
+
+  .card {
+    border-radius: 1em;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 1em;
+  }
+
+  .form {
+    display: grid;
+    gap: 2em;
+  }
+
+  .form__radios {
+    display: grid;
+    gap: 1em;
+  }
+
+  .form__radio {
+    align-items: center;
+    background-color: #fefdfe;
+    border-radius: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    display: flex;
+    padding: 1em;
+  }
+
+  .form__radio label {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    gap: 1em;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+  }
+
+  .icon {
+    block-size: 1em;
+    display: inline-block;
+    fill: currentColor;
+    inline-size: 1em;
+    vertical-align: middle;
+  }
+
+  .iphone {
+    background-color: #fbf6f7;
+    background-image: linear-gradient(to bottom, #fbf6f7, #fff);
+    border-radius: 2em;
+    block-size: 50%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    inline-size: 60%;
+    overflow: auto;
+    padding: 2em;
+  }
+</style>
+
+<section id="product-wrapper" style="margin-bottom: 10px;">
+
+
+  <div class="wrapper">
+    <div class="inner">
+
+      <div class="shopping-cart" style="display: flex; align-items: center;justify-content: center;">
+
+        <div class="iphone">
+          <header class="header">
+            <h1>Thông tin đơn hàng</h1>
+          </header>
+
+          <form action="" class="form" method="POST" style="color: #000;">
+            <div style="display: flex; justify-content: space-between;">
+              <div style="width: 100%;">
+                <h2>Họ và tên</h2>
+                <input onblur="handleChangeCus(event, 'name')" name="name" style="width: 100%;" type="text">
+              </div>
+
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <div style="width: 50%;">
+                <h2>Số điện thoại</h2>
+                <input onblur="handleChangeCus(event, 'sdt')" name="sdt" style="width: 90%;" type="text">
+              </div>
+
+              <div style="width: 50%;">
+                <h2>Email </h2>
+                <input onblur="handleChangeCus(event, 'email')" name="email" style="width: 90%;" type="text">
+              </div>
+            </div>
+            <div>
+              <h2>Địa chỉ</h2>
+
+              <div class="">
+                <textarea onblur="handleChangeCus(event, 'diachi')" name="diachi"
+                  style="color: #000; width: 100%; scroll-behavior: unset;">
+
+                  </textarea>
+              </div>
+            </div>
+
+
+            <fieldset>
+              <legend>Phương thức thanh toán</legend>
+
+              <div class="form__radios">
+                <div class="form__radio">
+                  <label for="visa">Thanh toán khi nhận hàng (COD)</label>
+                  <input onchange="changePay(event)" value="cod" checked id="visa" name="payment-method" type="radio" />
+                </div>
+
+                <div class="form__radio">
+                  <label for="paypal">Chuyển khoản ngân hàng (Miễn phí thanh toán)</label>
+                  <input onchange="changePay(event)" value="bank" id="paypal" name="payment-method" type="radio" />
+                </div>
+                <div id="banks-show" style="display: none;">
+                  <h3>Thông tin chuyển khoản</h3>
+                  <div style="">
+                    <ul style="list-style: none;">
+                      <li>Ngân hàng: Vietcombank (TMCP Ngoại thương VN) – Chi nhánh Hội sở</li>
+                      <li>Số tài khoản: 0071001233377</li>
+                      <li>Chủ tài khoản: Trần Đức Minh</li>
+                      <li>Nội dung chuyển khoản: Số-điện-thoại-của-bạn</li>
+                    </ul>
+                    Sau đó, bấm nút 'Hoàn tất' phía dưới.
+                  </div>
+                </div>
+
+
+              </div>
+            </fieldset>
+
+            <div>
+              <table>
+                <tfoot>
+                  <tr>
+                    <td>Tổng tiền</td>
+                    <td align="right" id="total-order"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <div>
+              <button onclick="doCheckout()" style="background-color: #e96363;" class="button button--full"
+                type="button">Hoàn tất</button>
+            </div>
+          </form>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  const pay = document.getElementsByName("payment-method")
+  const banks = document.getElementById("banks-show")
+  const name = document.getElementsByName("name")[0]
+  const sdt = document.getElementsByName("sdt")[0]
+  const email = document.getElementsByName("email")[0]
+  const diachi = document.getElementsByName("diachi")[0]
+
+  let order = {
+    carts: getFromLocalStorage("carts"),
+    customer: {
+      name: "",
+      sdt: "",
+      diachi: "",
+      email: "",
+      thanhtoan: "cod"
+    }
+  }
+  function changePay(event) {
+    const paystring = event.target.value
+    let customer = order.customer
+    if (paystring === "bank") {
+      customer = { ...customer, thanhtoan: "bank" }
+      banks.style.display = "block"
+    } else {
+      customer = { ...customer, thanhtoan: "cod" }
+      banks.style.display = "none"
+    }
+    order = { ...order, customer: customer }
+  }
+
+  function handleChangeCus(event, attr) {
+    const val = event.target.value
+    let customer = order.customer
+    customer = { ...customer, [attr]: val }
+    order = { ...order, customer: customer }
+    console.log(customer);
+  }
+
+  function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+  function renderTable() {
+    let carts = getFromLocalStorage("carts")
+    let sum = 0;
+    carts.forEach(element => {
+      sum += element.price * element.soluong
+    });
+
+    document.getElementById("total-order").innerText = sum
+  }
+
+  window.onload = renderTable()
+
+  async function doCheckout() {
+    const res = await fetch("/api/order", {
+      method: 'POST',
+      body: JSON.stringify(order),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    const data = await res.json()
+    resetCart()
+    window.location.href=`/order/success?id=${data.id_order}`
+  }
+
+</script>

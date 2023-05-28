@@ -6,7 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes');
 var collectionRouter = require('./routes/collections');
-var productionRouter = require("./routes/productions")
+var productionRouter = require("./routes/productions");
+var searchRouter = require("./routes/search")
+var checkoutRouter = require("./routes/checkout")
+var orderRouter = require("./routes/order")
+var apiOrder =  require("./restapi/api-order")
 var globalMiddleware = require("./middleware/global_middleware")
 
 var app = express();
@@ -28,6 +32,10 @@ app.use("/*", globalMiddleware)
 app.use('/', indexRouter);
 app.use('/collections', collectionRouter);
 app.use("/production", productionRouter);
+app.use("/search", searchRouter);
+app.use("/checkouts", checkoutRouter);
+app.use("/order", orderRouter)
+app.use("/api/order", apiOrder )
 
 app.use("/about", (req, res)=> {
   res.render('index', { pageName: "about", pageData: {} });

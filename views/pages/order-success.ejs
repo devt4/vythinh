@@ -1,0 +1,58 @@
+<div class="con">
+    <div class="card" onload="resetCart()">
+        <div>
+            <i class="checkmark">✓</i>
+        </div>
+        <h1>Bạn đã đặt hàng thành công!</h1>
+        <p>Chúng tôi đã nhận được đơn hàng của bạn<br /> và sẽ liên hệ với bạn ngay!</p>
+        <br>
+        <div class="info-order">
+            <h5>Mã đơn hàng: <%= pageData.order._id %></h5>
+        </div>
+    </div>
+    
+</div>
+<script>
+   
+</script>
+
+<style>
+    .con{
+        text-align: center;
+        padding: 40px 0;
+        background: #EBF0F5;
+    }
+    .card > h1 {
+        color: #88B04B;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-weight: 900;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .card > p {
+        color: #404F5E;
+        font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+        font-size: 20px;
+        margin: 0;
+    }
+    .checkmark{
+        color: #88B04B;
+        font-size: 100px;
+    }
+    .card > i {
+        color: #9ABC66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left: -15px;
+    }
+
+    .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+    }
+</style>
