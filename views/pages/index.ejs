@@ -86,18 +86,11 @@
             </h2>
           </div>
           <div id="instafeed">
-            <a href="p/B1nyNWsFL6M/" target="_blank">
-              <img src="/rs/img_instagram1.jpg?v=139" />
-            </a>
-            <a href="p/Bz7IrYRlddC/" target="_blank">
-              <img src="/rs/img_instagram2.jpg?v=139" />
-            </a>
-            <a href="p/B0Fvl6jFm_0/" target="_blank">
-              <img src="/rs/img_instagram3.jpg?v=139" />
-            </a>
-            <a href="p/Bz7HtjdFd30/" target="_blank">
-              <img src="/rs/img_instagram4.jpg?v=139" />
-            </a>
+            <% data.indexData.insImages.forEach(function(i){ %>
+                <a href="" target="_blank">
+                    <img src="<%= i %>" />
+                  </a>
+            <% }); %>
           </div>
         </div>
       </div>

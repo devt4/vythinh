@@ -5,7 +5,6 @@ var router = express.Router();
 
 router.post('/', async function (req, res, next) {
   const ido = new Date().getTime().toString()
-  console.log("id"+ido);
   let order = {...req.body, _id: ido}
   const rs = await saveOrder(order)
   console.log(rs);

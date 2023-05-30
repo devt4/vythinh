@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes');
 var collectionRouter = require('./routes/collections');
@@ -11,6 +12,7 @@ var searchRouter = require("./routes/search")
 var checkoutRouter = require("./routes/checkout")
 var orderRouter = require("./routes/order")
 var apiOrder =  require("./restapi/api-order")
+var apiCollections = require("./restapi/api-collection")
 var globalMiddleware = require("./middleware/global_middleware")
 
 var app = express();
@@ -18,6 +20,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(cors({
+  origin: '*'
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,6 +41,7 @@ app.use("/search", searchRouter);
 app.use("/checkouts", checkoutRouter);
 app.use("/order", orderRouter)
 app.use("/api/order", apiOrder )
+app.use("/api/collections", apiCollections )
 
 app.use("/about", (req, res)=> {
   res.render('index', { pageName: "about", pageData: {} });
@@ -59,6 +65,6 @@ app.use(function(err, req, res, next) {
 
 
 
-app.listen(3000, ()=>{
+app.listen(3001, ()=>{
   console.log("Server started");
 })

@@ -1,13 +1,16 @@
 const { defaultFilter, PRICE_DOWN, PRICE_UP, BSL } = require("../const/const")
-const clientPromise =  require("../libs/mongodb-client")
-const {filterProductionsByTags, sortProductions} = require("../libs/collection-until")
+const clientPromise = require("../libs/mongodb-client")
+const { filterProductionsByTags, sortProductions } = require("../libs/collection-until")
 
 const getCollectionById = async (id, filter) => {
-    const client = await clientPromise
-    const db = client.db("lamapex");
-    const rs = await db.collection("collections").findOne({ "_id": id })
-   
-    return { ...rs, products: sortProductions(rs.products, sort = filter.sort) }
+    try {
+        const client = await clientPromise
+        const db = client.db("lamapex");
+        const rs = await db.collection("collections").findOne({ "_id": id })
+        return { ...rs, products: sortProductions(rs.products, sort = filter.sort) }
+    } catch (error) {
+        return {}
+    }
 }
 
 const getCollections = async (tags = []) => {
@@ -20,15 +23,31 @@ const getCollections = async (tags = []) => {
     return rs;
 }
 
-const findCollectionByProductId= async (idProduct) =>{
+const getCollectionsAll = async (tags = []) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").find({}).toArray()
+    return rs;
+}
+
+const findCollectionByProductId = async (idProduct) => {
     const client = await clientPromise
     const db = client.db("lamapex");
     const rs = await db.collection("collections").findOne({ "products.id": idProduct })
     return rs
 }
 
+const addCollection= async (collection) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").insertOne(collection)
+    return rs
+}
+
 module.exports = {
     getCollectionById: getCollectionById,
     getCollections: getCollections,
-    findCollectionByProductId: findCollectionByProductId
+    findCollectionByProductId: findCollectionByProductId,
+    getCollectionsAll: getCollectionsAll,
+    addCollection: addCollection
 }
