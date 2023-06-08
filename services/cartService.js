@@ -20,8 +20,27 @@ const saveOrder = async (order) => {
     return rs
 }
 
+const getOrders = async () => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("orders").find({}).toArray()
+    return rs
+}
+
+const updateOrder = async (order) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").updateOne({ "_id": order._id },
+        {
+            "$set": order
+        })
+    return rs
+}
+
 module.exports = {
     getCarts: getCarts,
     getOrderById: getOrderById,
-    saveOrder: saveOrder
+    saveOrder: saveOrder,
+    getOrders,
+    updateOrder
 }

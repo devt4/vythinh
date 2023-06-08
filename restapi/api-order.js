@@ -1,5 +1,5 @@
 var express = require('express');
-const { saveOrder } = require('../services/cartService');
+const { saveOrder, getOrders, updateOrder } = require('../services/cartService');
 var router = express.Router();
 
 
@@ -7,10 +7,19 @@ router.post('/', async function (req, res, next) {
   const ido = new Date().getTime().toString()
   let order = {...req.body, _id: ido}
   const rs = await saveOrder(order)
-  console.log(rs);
   res.send(JSON.stringify({id_order: rs.insertedId}))
 });
 
+router.get('/', async function (req, res, next) {
+  const rs = await getOrders()
+  res.send(JSON.stringify(rs))
+});
+
+router.put('/', async function (req, res, next) {
+  const order = req.body
+  const rs = await updateOrder(order)
+  res.send(JSON.stringify(rs))
+});
 
 
 

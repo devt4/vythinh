@@ -37,10 +37,28 @@ const findCollectionByProductId = async (idProduct) => {
     return rs
 }
 
-const addCollection= async (collection) => {
+const addCollection = async (collection) => {
     const client = await clientPromise
     const db = client.db("lamapex");
     const rs = await db.collection("collections").insertOne(collection)
+    return rs
+}
+
+const updateCollection = async (collections) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").updateOne({ "_id": collections._id },
+        {
+            "$set": collections
+        })
+    return rs
+}
+
+
+const deleteCollection = async (id) => {
+    const client = await clientPromise
+    const db = client.db("lamapex");
+    const rs = await db.collection("collections").deleteOne({ "_id": id })
     return rs
 }
 
@@ -49,5 +67,7 @@ module.exports = {
     getCollections: getCollections,
     findCollectionByProductId: findCollectionByProductId,
     getCollectionsAll: getCollectionsAll,
-    addCollection: addCollection
+    addCollection: addCollection,
+    updateCollection: updateCollection,
+    deleteCollection: deleteCollection
 }
